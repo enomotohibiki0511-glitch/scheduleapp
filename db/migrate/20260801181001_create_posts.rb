@@ -1,11 +1,11 @@
 class CreatePosts < ActiveRecord::Migration[7.2]
   def change
     create_table :posts do |t|
-      t.string :title
+      t.string :title, null: false
       t.text :body
-      t.date :start_date
-      t.date :end_date
-      t.boolean :all_day
+      t.date :start_date, null: false
+      t.date :end_date, null: false
+      t.boolean :all_day, null: false, default: false
 
       t.timestamps
     end
