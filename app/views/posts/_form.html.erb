@@ -1,0 +1,41 @@
+<%= form_with model: post, local: true do |f| %>
+  <% if post.errors.any? %>
+    <div>
+      <h2><%= pluralize(post.errors.count, "件") %>のエラーが発生しました。</h2>
+      <ul>
+        <% post.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= f.label :title, "タイトル" %>
+    <%= f.text_field :title, maxlength: 20 %>
+  </div>
+
+  <div>
+    <%= f.label :start_date, "開始日" %>
+    <%= f.date_field :start_date %>
+  </div>
+
+  <div>
+    <%= f.label :end_date, "終了日" %>
+    <%= f.date_field :end_date %>
+  </div>
+
+  <div>
+    <%= f.label :all_day, "終日" %>
+    <%= f.check_box :all_day %>
+  </div>
+
+  <div>
+    <%= f.label :body, "スケジュールメモ" %>
+    <%= f.text_area :body, maxlength: 500 %>
+  </div>
+
+  <div>
+    <%= f.submit %>
+  </div>
+<% end %>
